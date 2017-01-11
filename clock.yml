@@ -5,3 +5,6 @@
   tasks:
     - name: run raw commands
       raw: show clock
+      
+    - name: print the time
+      debug: msg="The date and time of {{ inventory_hostname }} is {{ show_clock.stdout }}"
