@@ -1,0 +1,20 @@
+---
+- name: Get Inventory Information
+  hosts: routers
+  gather_facts: no
+  connection: local
+  tasks:
+    - name: Send Show Inventory Command
+      ios_config:
+        host: "{{ ansible_host }}"
+        username: "{{ ansible_user }}"
+        password: "{{ ansible_password }}"
+        lines:
+          - 10 permit ip host 1.1.1.6 any log
+          - 20 permit ip host 2.2.2.7 any log
+          - 30 permit ip host 3.3.3.8 any log
+          - 40 permit ip host 4.4.4.4 any log
+          - 50 permit ip host 5.5.5.5 any log
+        parents: ip access-list extended test
+        before: no ip access-list extended test
+        match: exact
