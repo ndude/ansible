@@ -1,0 +1,14 @@
+---
+- name: Get Inventory Information
+  hosts: R1
+  gather_facts: no
+  tasks:
+    - name: Send Show Inventory Command
+      ios_command:
+        host: "{{ ansible_host }}"
+        username: "{{ ansible_user }}"
+        password: "{{ ansible_password }}"
+        commands:
+          - show inventory
+      register: inventory
+    - debug: var=inventory
