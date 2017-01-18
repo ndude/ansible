@@ -29,4 +29,4 @@
         - show clock
     register: clock
 
-  - debug: msg="{{ clock.stdout }}"
+  - debug: msg="{{ clock.stdout_lines }}"
